@@ -11,6 +11,8 @@ mkdir myproj
 cd myproj
 npm init
 npm install express --save
+vi app.js
+node app.js
 ```
 app.js
 ```javascript
