@@ -31,8 +31,8 @@ app.listen(80)
 ```shell
 npm install express-mysql-restful-generator --save
 node node_modules/express-mysql-restful-generator/cli.js
-//path/to/configfile
-//path/for/generated/files
+//path_for_configfile
+//path_for_generated_files
 //host
 //user
 //password
@@ -64,6 +64,6 @@ app.use('/table1',restfulRouters.get('table_name1'))
 ```
 customize table router/actions
 ```shell
-vi path/for/generated/files/table_name
+vi path_for_generated_files/table_name
 ```
 
