@@ -11,7 +11,7 @@ mkdir myproj
 cd myproj
 npm init
 npm install express --save
-vi app.js
+vi app.js #copy code into app.js
 node app.js
 ```
 app.js
@@ -64,6 +64,6 @@ app.use('/table1',restfulRouters.get('table_name1'))
 ```
 customize table router/actions
 ```shell
-vi path_for_generated_files/table_name
+vi path_for_generated_files/table_name #and modify it
 ```
 
