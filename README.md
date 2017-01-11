@@ -54,3 +54,16 @@ app.get('/', function(req, res) {
 
 app.listen(80)
 ```
+cases
+```javascript
+//default
+app.use('/restful',restfulRouters())
+
+//only table
+app.use('/table1',restfulRouters.get('table_name1'))
+```
+customize table router/actions
+```shell
+vi path/for/generated/files/table_name
+```
+
