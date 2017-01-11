@@ -1,0 +1,25 @@
+{
+  "name": "express-mysql-restful-generator",
+  "version": "1.0.0",
+  "description": "generate files for restful api for each table, require them as routers and use in your app\r - designed for an working express, not only for mysql\r - different router for each table\r - routers hook to any path, or modify get/post/put/delete actions\r - more flexable but you have to do some code, not just config",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/postor/express-mysql-restful-generator.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/postor/express-mysql-restful-generator/issues"
+  },
+  "homepage": "https://github.com/postor/express-mysql-restful-generator#readme",
+  "dependencies": {
+    "bookshelf": "^0.10.2",
+    "express": "^4.14.0",
+    "knex": "^0.12.6",
+    "mysql": "^2.12.0"
+  }
+}
