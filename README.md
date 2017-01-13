@@ -31,13 +31,12 @@ app.listen(80)
 ```shell
 npm install express-mysql-restful-generator --save
 node node_modules/express-mysql-restful-generator/cli.js
-//path_for_configfile
-//path_for_generated_files
-//host
-//user
-//password
-//db
-//table....
+#path_for_generated_files
+#host
+#user
+#password
+#db
+#done!
 vi app.js
 ```
 app.js
