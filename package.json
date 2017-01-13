@@ -22,7 +22,6 @@
     "file-save": "^0.2.0",
     "fs-promise": "^1.0.0",
     "knex": "^0.12.6",
-    "knex-list-db-table": "^0.2.0",
     "lodash": "^4.17.4",
     "mysql": "^2.12.0",
     "mysql-utilities": "^1.0.8",
