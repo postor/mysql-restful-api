@@ -1,0 +1,82 @@
+/**
+ * 自动生成的代码
+ */
+
+var express = require('express')
+var router = express.Router()
+var Model = require('../models/<%= tableName %>').Model
+var parseQuery = require('../utils').parseQuery
+
+router.get('/',(req,res,next)=>{
+  var parsed = parseQuery(req.query)
+  Model.where(parsed.where)
+  .fetchPage(parsed.pager)
+  .then((result)=>{
+    res.json({
+      error: 0,
+      models: result.models,
+      pagination: result.pagination
+    })
+  },(err)=>{
+    res.json({
+      error: err.message||err
+    })
+  })
+})
+
+router.post('/',(req,res,next)=>{
+  new Model(req.body).save()
+  .then((model)=>{
+    res.json({
+      error: 0,
+      model: model
+    })
+  },(err)=>{
+    res.json({
+      error: err.message||err
+    })
+  })
+})
+
+router.put('/:id',(req,res,next)=>{
+  <% if(primaryKey){ %>
+  new Model({
+    <%= primaryKey %>: req.params.id
+  }).save(req.body)
+  .then((model)=>{
+    res.json({
+      error: 0,
+      model: model
+    })
+  },(err)=>{
+    res.json({
+      error: err.message||err
+    })
+  })
+
+  <% }else{ %>
+  throw 'no primary key, you can not update!'
+  <% } %>
+})
+
+router.delete('/:id',(req,res,next)=>{
+  <% if(primaryKey){ %>
+  new Model({
+    <%= primaryKey %>: req.params.id
+  }).destroy()
+  .then(()=>{
+    res.json({
+      error: 0
+    })
+  },(err)=>{
+    res.json({
+      error: err.message||err
+    })
+  })
+
+  <% }else{ %>
+  throw 'no primary key, you can not delete!'
+  <% } %>
+})
+
+module.exports = router
