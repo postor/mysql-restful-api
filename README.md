@@ -39,6 +39,7 @@ node node_modules/express-mysql-restful-generator/cli.js
 #done!
 vi app.js
 ```
+## use generated code
 app.js
 ```javascript
 
