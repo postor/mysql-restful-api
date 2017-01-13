@@ -43,10 +43,9 @@ vi app.js
 app.js
 ```javascript
 
-var restfulRouters = require('express-mysql-restful-generator')
 var express = require('express');
 var app = express();
-app.use('/restful',restfulRouters())
+app.use('/restful',require('restful/default-router'))
 // respond with "hello world" when a GET request is made to the homepage
 app.get('/', function(req, res) {
   res.send('hello world');
@@ -57,13 +56,28 @@ app.listen(80)
 cases
 ```javascript
 //default
-app.use('/restful',restfulRouters())
+app.use('/restful',require('restful/default-router'))
 
 //only table
-app.use('/table1',restfulRouters.get('table_name1'))
+app.use('/table1',require('restful/routers/table1')))
 ```
 customize table router/actions
 ```shell
 vi path_for_generated_files/table_name #and modify it
 ```
-
+## result example
+/restful/test_table?id=1
+```javascript
+{
+  "error":0,
+  "models":[
+    {"id":1,"name":"2017-01-13 12:56:25"}
+   ],
+   "pagination":{
+     "page":1,
+     "pageSize":10,
+     "rowCount":1,
+     "pageCount":1
+   }
+ }
+```
