@@ -12,30 +12,35 @@ router.get('/',(req,res,next)=>{
   Model.where(parsed.where)
   .fetchPage(parsed.pager)
   .then((result)=>{
-    res.json({
-      error: 0,
-      models: result.models,
-      pagination: result.pagination
-    })
+    res.set('X-Total-Count':result.pagination.rowCount)
+    res.json(result.models)
   },(err)=>{
-    res.json({
-      error: err.message||err
-    })
+    res.status(500).send(err.message||err)
   })
 })
 
 router.post('/',(req,res,next)=>{
   new Model(req.body).save()
   .then((model)=>{
-    res.json({
-      error: 0,
-      model: model
-    })
+    res.json(model)
   },(err)=>{
-    res.json({
-      error: err.message||err
-    })
+    res.status(500).send(err.message||err)
   })
+})
+
+
+router.get('/:id',(req,res,next)=>{
+  <% if(primaryKey){ %>
+  Model.where({<%= primaryKey %>:req.params.id})
+  .fetch()
+  .then((model)=>{
+    res.json(model)
+  },(err)=>{
+    res.status(500).send(err.message||err)
+  })
+  <% }else{ %>
+  throw 'no primary key, you can not get by id!'
+  <% } %>
 })
 
 router.put('/:id',(req,res,next)=>{
@@ -44,14 +49,9 @@ router.put('/:id',(req,res,next)=>{
     <%= primaryKey %>: req.params.id
   }).save(req.body)
   .then((model)=>{
-    res.json({
-      error: 0,
-      model: model
-    })
+    res.json(model)
   },(err)=>{
-    res.json({
-      error: err.message||err
-    })
+    res.status(500).send(err.message||err)
   })
 
   <% }else{ %>
@@ -69,9 +69,7 @@ router.delete('/:id',(req,res,next)=>{
       error: 0
     })
   },(err)=>{
-    res.json({
-      error: err.message||err
-    })
+    res.status(500).send(err.message||err)
   })
 
   <% }else{ %>
