@@ -95,6 +95,7 @@ promisePrompt([{
 .then(()=>{
   promisePrompt.close()
   console.log('done!')
+  process.exit()
 },(err)=>{
   console.log(err)
 })
