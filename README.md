@@ -68,7 +68,5 @@ vi path_for_generated_files/table_name #and modify it
 ## result example
 /restful/test_table?id=1
 ```javascript
-[
   {"id":1,"name":"2017-01-13 12:56:25"}
-]
 ```
