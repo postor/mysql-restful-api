@@ -1,0 +1,31 @@
+var myApp = angular.module('myApp', ['ng-admin']);
+myApp.config(['NgAdminConfigurationProvider', function (nga) {
+    var admin = nga.application('My Admin').baseApiUrl('/restful/'); 
+    
+    <% for(var i in tables){ %>
+    (()=>{
+        //---- code for table <%= i %> ----
+        var idField = nga.field('<%= tables[i].primaryKey %>')
+        var otherFields = [
+            <% tables[i].otherFields.forEach((fieldName)=>{ %>
+            nga.field('<%= fieldName %>'),
+            <% }) %>
+        ]
+        var table = nga.entity('<%= i %>').identifier(idField);
+
+        table.listView().fields(otherFields).listActions(['show','edit','delete'])
+
+        table.creationView().fields(otherFields);
+        table.editionView().fields(otherFields);
+        table.showView().fields([
+            idField,
+            ...otherFields
+        ]);
+        admin.addEntity(table);
+    })()    
+
+    <% } %>
+
+    // attach the admin application to the DOM and execute it
+    nga.configure(admin);
+}]);

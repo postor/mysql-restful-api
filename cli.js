@@ -3,6 +3,7 @@
  */
 var promisePrompt = require('./lib/cli/promise-prompt') 
 var tableUtil = require('./lib/cli/table') 
+var adminUtil = require('./lib/cli/admin')
 var getConnectionConfig = require('./lib/cli/connection')
 var knex = require('knex')
 var path = require('path')
@@ -90,6 +91,10 @@ promisePrompt([{
   return Promise.all(files.map((file)=>{
     return fs.copy(path.join(tmplDir,file),path.join(restfulPath,file))
   }))
+})
+//生成admin
+.then(()=>{
+  return adminUtil.generateAdminFiles(restfulPath,config.tables,mysqlConnection)
 })
 //结果
 .then(()=>{

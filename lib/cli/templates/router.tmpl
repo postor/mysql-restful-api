@@ -6,13 +6,16 @@ var express = require('express')
 var router = express.Router()
 var Model = require('../models/<%= tableName %>').Model
 var parseQuery = require('../utils').parseQuery
+var bodyParser = require('body-parser')
+
+router.use(bodyParser.json())
 
 router.get('/',(req,res,next)=>{
   var parsed = parseQuery(req.query)
   Model.where(parsed.where)
   .fetchPage(parsed.pager)
   .then((result)=>{
-    res.set('X-Total-Count':result.pagination.rowCount)
+    res.set('X-Total-Count',result.pagination.rowCount)
     res.json(result.models)
   },(err)=>{
     res.status(500).send(err.message||err)

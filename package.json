@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/postor/express-mysql-restful-generator#readme",
   "dependencies": {
+    "body-parser": "^1.15.2",
     "bookshelf": "^0.10.2",
     "express": "^4.14.0",
     "file-save": "^0.2.0",
