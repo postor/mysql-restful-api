@@ -1,6 +1,6 @@
 var myApp = angular.module('myApp', ['ng-admin']);
 myApp.config(['NgAdminConfigurationProvider', function (nga) {
-    var admin = nga.application('My Admin').baseApiUrl('/restful/'); 
+    var admin = nga.application('My Admin').baseApiUrl('../'); 
     
     <% var first = true;for(var i in tables){ %>
     <% if(first){ first=false; %>
