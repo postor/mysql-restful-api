@@ -1,9 +1,13 @@
 # express-mysql-restful-generator
 generate files for restful api for each table, require them as routers and use in your app
-- designed for an working express, not only for mysql
-- different router for each table
-- routers hook to any path, or modify get/post/put/delete actions
-- more flexable but you have to do some code, not just config
+- designed for an working express
+- more flexable
+
+
+related projects
+- bookshelf.js http://www.bookshelfjs.org/
+- ng-admin https://ng-admin-book.marmelab.com/
+
 
 ## prepare a working express if you don't have one
 ```shell
