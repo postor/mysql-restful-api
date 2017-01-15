@@ -72,7 +72,7 @@ vi path_for_generated_files/table_name #and modify it
 - editionView   => PUT    /users/:id
 - deletionView  => DELETE /users/:id
 
-/restful/test_table?id=1
+/restful/test_table/1
 ```javascript
   {"id":1,"name":"2017-01-13 12:56:25"}
 ```
