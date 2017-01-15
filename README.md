@@ -65,8 +65,17 @@ customize table router/actions
 ```shell
 vi path_for_generated_files/table_name #and modify it
 ```
-## result example
+## restful standard
+- listView      => GET    /users    
+- creationView  => POST   /users    
+- showView      => GET    /users/:id
+- editionView   => PUT    /users/:id
+- deletionView  => DELETE /users/:id
+
 /restful/test_table?id=1
 ```javascript
   {"id":1,"name":"2017-01-13 12:56:25"}
 ```
+## admin page
+/restful/admin/
+- using ng-admin https://github.com/marmelab/ng-admin
