@@ -1,7 +1,7 @@
 {
   "name": "express-mysql-restful-generator",
-  "version": "1.0.4",
-  "description": "generate files for restful api for each table, require them as routers and use in your app\r - designed for an working express, not only for mysql\r - different router for each table\r - routers hook to any path, or modify get/post/put/delete actions\r - more flexable but you have to do some code, not just config",
+  "version": "1.0.5",
+  "description": "generate files for restful api and admin page for mysql, all generated, all under control, with admin page!",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
