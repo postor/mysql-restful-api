@@ -1,15 +1,15 @@
-# express-mysql-restful-generator
-generate files for restful api for each table, require them as routers and use in your app
-- designed for an working express
-- more flexable
+# express-mysql-restful-generator（名字有点长，求测字起名）
+给每个表生成对应的restful接口文件，作为Router使用在你的express项目中。|generate files for restful api for each table, require them as routers and use in your app
+- 可用于现有的express项目|designed for an working express
+- 所有的逻辑都是生成的，都可以改|more flexable
 
 
-related projects
+用到的项目|related projects
 - bookshelf.js http://www.bookshelfjs.org/
 - ng-admin https://ng-admin-book.marmelab.com/
 
 
-## prepare a working express if you don't have one
+## 如果不是现有的项目，就新建一个|prepare a working express if you don't have one
 ```shell
 mkdir myproj
 cd myproj
@@ -31,7 +31,7 @@ app.get('/', function(req, res) {
 app.listen(80)
 ```
 
-## use this to generate code
+## 使用本项目生成restful代码|use this to generate code
 ```shell
 npm install express-mysql-restful-generator --save
 node node_modules/express-mysql-restful-generator/cli.js
@@ -43,7 +43,7 @@ node node_modules/express-mysql-restful-generator/cli.js
 #done!
 vi app.js
 ```
-## use generated code
+## 应用这些生成的代码|use generated code
 app.js
 ```javascript
 
@@ -57,7 +57,7 @@ app.get('/', function(req, res) {
 
 app.listen(80)
 ```
-cases
+定制情况（自由发挥）|cases
 ```javascript
 //default
 app.use('/restful',require('./restful/default-router'))
@@ -65,11 +65,11 @@ app.use('/restful',require('./restful/default-router'))
 //only table
 app.use('/table1',require('./restful/routers/table1')))
 ```
-customize table router/actions
+定制Router的实现（具体修改自由发挥）|customize table router/actions
 ```shell
 vi path_for_generated_files/table_name #and modify it
 ```
-## restful standard
+## 默认的restful规则|restful standard
 - listView      => GET    /users    
 - creationView  => POST   /users    
 - showView      => GET    /users/:id
@@ -80,6 +80,6 @@ vi path_for_generated_files/table_name #and modify it
 ```javascript
   {"id":1,"name":"2017-01-13 12:56:25"}
 ```
-## admin page
+## 后台管理页面|admin page
 /restful/admin/
 - using ng-admin https://github.com/marmelab/ng-admin
