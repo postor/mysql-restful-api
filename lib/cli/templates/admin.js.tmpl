@@ -21,7 +21,7 @@ myApp.config(['NgAdminConfigurationProvider', function (nga) {
             ...otherFields
         ];
 
-        var table = nga.entity('<%= i %>').identifier(idField);
+        var table = nga.entity('<%= i %>').identifier(idField).label('<%= tables[i].tableDetail.TABLE_COMMENT||i %>');
 
         table.listView()
         .fields(allFields)

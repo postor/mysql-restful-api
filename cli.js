@@ -1,6 +1,7 @@
 /**
  * 通过输入构造配置文件，数据库连接，表模型等
  */
+var Promise = require("bluebird");
 var promisePrompt = require('./lib/cli/promise-prompt') 
 var tableUtil = require('./lib/cli/table') 
 var adminUtil = require('./lib/cli/admin')
@@ -22,6 +23,7 @@ var config = {
 var restfulPath = ''
 var configFilePath = ''
 var mysqlConnection = null
+var tableDetails = null
 
 //保存路径
 promisePrompt([{
@@ -40,14 +42,9 @@ promisePrompt([{
 .then((connection)=>{
   config.db.connection = connection  
   var conn = mysql.createConnection(connection)
-  return new Promise((resolve,reject)=>{
-    conn.connect((err)=>{
-      if(err){
-        reject(err)
-      }else{
-        resolve(conn)
-      }
-    })
+  return Promise.promisify(conn.connect,{context: conn})()
+  .then(()=>{
+    return conn
   })
 })
 //show tables
@@ -58,18 +55,11 @@ promisePrompt([{
   mysqlUtilities.introspection(connection)
   mysqlConnection = connection
 
-  return new Promise((resolve,reject)=>{
-    connection.tables(function(err,tables){
-      if(err){
-        reject(err)
-      }else{
-        resolve(tables)
-      }
-    })
-  })
+  return Promise.promisify(connection.tables,{context: connection})()
 })
 //遍历表并生成model和router文件
 .then((tables)=>{
+  tableDetails = tables
   var tableNames = Object.keys(tables)
   if(!tableNames.length){
     return getReject('no tables found! create your tables then run this')
@@ -94,7 +84,7 @@ promisePrompt([{
 })
 //生成admin
 .then(()=>{
-  return adminUtil.generateAdminFiles(restfulPath,config.tables,mysqlConnection)
+  return adminUtil.generateAdminFiles(restfulPath,config.tables,mysqlConnection,tableDetails)
 })
 //结果
 .then(()=>{
