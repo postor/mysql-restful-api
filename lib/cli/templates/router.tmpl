@@ -12,8 +12,11 @@ router.use(bodyParser.json())
 
 router.get('/',(req,res,next)=>{
   var parsed = parseQuery(req.query)
-  Model.where(parsed.where)
-  .fetchPage(parsed.pager)
+  var query = Model.where(parsed.where)
+  if(parsed.sort.column && parsed.sort.column){
+    query = query.orderBy(parsed.sort.column,parsed.sort.direction)
+  }
+  query.fetchPage(parsed.pager)
   .then((result)=>{
     res.set('X-Total-Count',result.pagination.rowCount)
     res.json(result.models)

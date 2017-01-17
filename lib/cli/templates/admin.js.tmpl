@@ -1,47 +1,47 @@
 var myApp = angular.module('myApp', ['ng-admin']);
 myApp.config(['NgAdminConfigurationProvider', function (nga) {
     var admin = nga.application('My Admin').baseApiUrl('../'); 
-    
+    var allEntitys = {};
     <% var first = true;for(var i in tables){ %>
-    <% if(first){ first=false; %>
-    (()=>{
-        //---- code for table <%= i %> ----
-        var idField = nga.field('<%= tables[i].primaryKey %>')
-        var otherFields = [<% tables[i].otherFields.forEach((fieldName)=>{ %>            
-            nga.field('<%= fieldName %>'),
-            <% }) %>
-        ]
-        var table = nga.entity('<%= i %>').identifier(idField);
-
-        table.listView().fields(otherFields).listActions(['show','edit','delete'])
-        table.creationView().fields(otherFields);
-        table.editionView().fields(otherFields);
-        table.showView().fields([
-            idField,
-            ...otherFields
-        ]);
-        admin.addEntity(table);
-    })()    
+    <% if(first){ %>
+    (()=>{    
     <% } else { %>
     setTimeout(()=>{
+    <% } %>
         //---- code for table <%= i %> ----
         var idField = nga.field('<%= tables[i].primaryKey %>')
-        var otherFields = [<% tables[i].otherFields.forEach((fieldName)=>{ %>            
-            nga.field('<%= fieldName %>'),
-            <% }) %>
-        ]
-        var table = nga.entity('<%= i %>').identifier(idField);
+        .label('<%= tables[i].allFields[tables[i].primaryKey].Comment || tables[i].primaryKey %>');
 
-        table.listView().fields(otherFields).listActions(['show','edit','delete'])
-        table.creationView().fields(otherFields);
-        table.editionView().fields(otherFields);
-        table.showView().fields([
+        var otherFields = [<% tables[i].otherFields.forEach((fieldName)=>{ %>            
+            nga.field('<%= fieldName %>').label('<%= tables[i].allFields[fieldName].Comment || fieldName %>'),
+            <% }) %>
+        ];
+        var allFields = [
             idField,
             ...otherFields
-        ]);
+        ];
+
+        var table = nga.entity('<%= i %>').identifier(idField);
+
+        table.listView()
+        .fields(allFields)
+        .listActions(['show','edit','delete'])
+        .filters(allFields.map(x=>x.pinned(true)))
+        .sortField('<%= tables[i].primaryKey %>')
+        .perPage(10);
+
+        table.creationView().fields(otherFields);
+        table.editionView().fields(allFields);
+        table.showView().fields(allFields);
+        
         admin.addEntity(table);
+        allEntitys['<%= i %>'] = table
+    <% if(first){ first=false;  %>
+    })()  
+    <% } else { %>
     },0)    
     <% } %>
+    //---- end for table <%= i %> ----
     <% } %>
 
     // attach the admin application to the DOM and execute it
