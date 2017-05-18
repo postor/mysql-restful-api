@@ -1,4 +1,5 @@
-# express-mysql-restful-generator（名字有点长，求测字起名）
+# mysql-restful-api
+
 给每个表生成对应的restful接口文件，作为Router使用在你的express项目中。|generate files for restful api for each table, require them as routers and use in your app
 - 可用于现有的express项目|designed for an working express
 - 所有的逻辑都是生成的，都可以改|more flexable
