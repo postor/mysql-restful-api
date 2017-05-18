@@ -89,3 +89,14 @@ vi path_for_generated_files/table_name #and modify it
 ## 后台管理页面|admin page
 /restful/admin/
 - using ng-admin https://github.com/marmelab/ng-admin
+
+## 常见问题|Q&A
+
+### Error: ER_NOT_SUPPORTED_AUTH_MODE 
+
+mysql终端
+
+```
+update user set authentication_string=password(''), plugin='mysql_native_password' where user='root';
+flush privileges;
+```
