@@ -34,8 +34,8 @@ app.listen(80)
 
 ## 使用本项目生成restful代码|use this to generate code
 ```shell
-npm install express-mysql-restful-generator --save
-node node_modules/express-mysql-restful-generator/cli.js
+npm install mysql-restful-api --save
+node node_modules/mysql-restful-api/cli.js
 #path_for_generated_files
 #host
 #user

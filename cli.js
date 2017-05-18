@@ -62,7 +62,7 @@ promisePrompt([{
   tableDetails = tables
   var tableNames = Object.keys(tables)
   if(!tableNames.length){
-    return getReject('no tables found! create your tables then run this')
+    return getReject('no table found! create your tables then run this')
   }
   config.tables = tableNames
   return Promise.all(tableNames.map((tableName)=>{
@@ -89,10 +89,11 @@ promisePrompt([{
 //结果
 .then(()=>{
   promisePrompt.close()
-  console.log('done!')
+  console.log('done! files generated in '+configFilePath)
   process.exit()
 },(err)=>{
   console.log(err)
+  process.exit()
 })
 
 
