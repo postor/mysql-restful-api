@@ -1,5 +1,5 @@
 {
-  "name": "express-mysql-restful-generator",
+  "name": "mysql-restful-api",
   "version": "1.0.10",
   "description": "generate files for restful api and admin page for mysql, all generated, all under control, with admin page!",
   "main": "index.js",
