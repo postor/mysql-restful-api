@@ -89,7 +89,7 @@ promisePrompt([{
 //结果
 .then(()=>{
   promisePrompt.close()
-  console.log('done! files generated in '+configFilePath)
+  console.log('done! files generated in '+restfulPath)
   process.exit()
 },(err)=>{
   console.log(err)
