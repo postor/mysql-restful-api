@@ -1,6 +1,6 @@
 {
   "name": "mysql-restful-api",
-  "version": "1.0.12",
+  "version": "1.0.13",
   "description": "generate files for restful api and admin page for mysql, all generated, all under control, with admin page!",
   "main": "index.js",
   "scripts": {
