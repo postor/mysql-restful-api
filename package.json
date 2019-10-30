@@ -1,6 +1,6 @@
 {
   "name": "mysql-restful-api",
-  "version": "1.0.13",
+  "version": "1.0.14",
   "description": "generate files for restful api and admin page for mysql, all generated, all under control, with admin page!",
   "main": "index.js",
   "scripts": {
@@ -17,17 +17,17 @@
   },
   "homepage": "https://github.com/postor/express-mysql-restful-generator#readme",
   "dependencies": {
-    "body-parser": "^1.15.2",
-    "bookshelf": "^0.10.2",
-    "express": "^4.14.0",
-    "knex": "^0.12.6",
-    "lodash": "^4.17.4",
-    "mysql": "^2.12.0",
-    "bluebird": "^3.5.0",
+    "body-parser": "^1.19.0",
+    "bookshelf": "^1.0.1",
+    "express": "^4.17.1",
+    "knex": "^0.20.1",
+    "lodash": "^4.17.15",
+    "mysql": "^2.17.1",
+    "bluebird": "^3.7.1",
     "file-save": "^0.2.0",
-    "fs-promise": "^1.0.0",
+    "fs-promise": "^2.0.3",
     "prompt": "^1.0.0",
-    "mysql-utilities": "^1.0.8"
+    "mysql-utilities": "^1.0.10"
   },
   "devDependencies": {
   }
