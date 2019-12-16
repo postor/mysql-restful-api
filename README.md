@@ -1,6 +1,7 @@
 # mysql-restful-api
 
-线上效果：http://172.104.79.155:4000/restful/admin/#/user/list
+![screenshot](https://img.youtube.com/vi/wd1eW9db-zk/0.jpg)
+youtube: https://youtu.be/wd1eW9db-zk
 
 示例代码仓库：https://github.com/postor/mysql-restful-api-example
 
